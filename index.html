@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="leafletApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="leaflet.css">
+    <script src="scripts.js"></script>
+    <script src="leaflet.js"></script>
+    <script src="angular-leaflet-directive.min.js"></script>
+</head>
+<body ng-controller="leafletController">
+<leaflet height="480px" width="100%" lf-center="sanFran" markers="markers"></leaflet>
+<button ng-click="addMarkers()">Add Markers</body>
+</body>
+</html>
