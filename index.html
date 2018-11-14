@@ -3,14 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="leaflet.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="leaflet.awesome-markers.css">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="scripts.js"></script>
     <script src="leaflet.js"></script>
     <script src="angular-leaflet-directive.min.js"></script>
+    <script src="leaflet.awesome-markers.js"></script>
+    <style>
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: lightblue;
+        }
+
+    </style>
 </head>
-<body ng-controller="leafletController">
+<body ng-controller="leafletController" class="panel panel-primary">
+<div class="panel-heading">Map</div>
+<div class="panel-body">
 <leaflet height="480px" width="100%" lf-center="sanFran" markers="markers"></leaflet>
-<button ng-click="addMarkers()">Add Markers</body>
+    <button ng-click="addMarkers()">Add Markers </button>
+    <div style="display:flex; flex-wrap: wrap;">
+      <div ng-repeat="marker in markers" style=" display:flex; flex-direction:column;" ng-class="marker.icon.markerColor==='red' ? 'red' : 'blue'">
+          <div style="display:flex; flex: 1; "  >
+
+                  {{marker.message}}
+          </div>
+          <div style="display:flex; flex: 1;">
+          <div> {{'lat:' +marker.lat}} </div>
+          </div>
+          <div style="display:flex; flex: 1;">
+      <div>{{' lng:'+ marker.lng  }}</div>
+          </div>
+          <div style="display:flex; flex: 1;">
+              <div>{{marker.icon.markerColor  }}</div>
+          </div>
+
+      </div>
+    </div>
+</div>
 </body>
 </html>
