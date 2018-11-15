@@ -10847,8 +10847,6 @@ app.controller('leafletController', ['$scope', function leafletController($scope
 
         var triggerpoints =[];
 
-        debugger;
-
         array.forEach(function(item){
 
            if(item.route===$scope.route) {
