@@ -34,6 +34,9 @@
 <div class="panel-body">
 <leaflet height="480px" width="100%" lf-center="sanFran" markers="markers"></leaflet>
     <button ng-click="addMarkers()">Add Markers </button>
+    <input type="text"  ng-bind="route">
+    <input type="text"  ng-bind="service_id">
+    <input type="text"  ng-bind="headsign">
     <div style="display:flex; flex-wrap: wrap;">
       <div ng-repeat="marker in markers" style=" display:flex; flex-direction:column;" ng-class="marker.icon.markerColor==='red' ? 'red' : 'blue'">
           <div style="display:flex; flex: 1; "  >
