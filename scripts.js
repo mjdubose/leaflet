@@ -10847,8 +10847,10 @@ app.controller('leafletController', ['$scope', function leafletController($scope
 
         var triggerpoints =[];
 
-        array.forEach(function(item){
+        $scope.markers = {};
 
+        array.forEach(function(item){
+         debugger;
            if(item.route===$scope.route) {
                item.data.forEach(function(service_id){
                 if (service_id[0].trip_headsign === $scope.headsign  ) {
