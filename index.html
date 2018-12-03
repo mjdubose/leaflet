@@ -33,12 +33,24 @@
 <div class="panel-heading">Map</div>
 <div class="panel-body">
 <leaflet height="480px" width="100%" lf-center="sanFran" markers="markers"></leaflet>
+    <form name="myform">
     <button ng-click="addMarkers()">Add Markers </button>
     route
     <input type="text"  ng-model="route">
     service id
-    <input type="text"  ng-model="service_id">
-    headsign
+    <input type="text"  ng-model="service_id"><br/>
+        <label>
+            <input type="radio" ng-model="triggerpoint.orientation" value="target">
+          Closest to Target Stop
+        </label><br/>
+        <label>
+            <input type="radio" ng-model="triggerpoint.orientation" value="previous">
+          Closest to Previous Stop
+        </label><br/>
+
+        <tt>trigger point location = {{triggerpoint.orientation | json}}</tt><br/>
+
+    </form>
 
     <div style="display:flex; flex-wrap: wrap;">
       <div ng-repeat="marker in markers" style=" display:flex; flex-direction:column;" ng-class="marker.icon.markerColor==='red' ? 'red' : 'blue'">
