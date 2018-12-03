@@ -40,7 +40,6 @@ app.controller('leafletController', ['$scope', function leafletController($scope
     };
 
     var _combineConsecutiveArrays = function (combined, point) {
-        debugger;
         var lastValue;
 
         var x;
@@ -53,19 +52,8 @@ app.controller('leafletController', ['$scope', function leafletController($scope
                 combined.push(x);
             });
         } else {
-            if (!lastValue) lastValue = combined[combined.length - 1].shape_dist_traveled;
-
-            var lastItemInPriorArray = combined[combined.length - 1];
-
-            if (lastItemInPriorArray.lon === point.array[0].lon * 1 && lastItemInPriorArray.lat === point.array[0].lat * 1) {
-                if (lastItemInPriorArray.stop_id) {
-                    point.array.shift();
-                } else {
-                    combined.pop();
-                }
-            }
-
             point.array.forEach(function (item) {
+                if (!lastValue) lastValue = combined[combined.length - 1].shape_dist_traveled;
                 x = item;
                 x.lat = x.lat * 1;
                 x.lon = x.lon * 1;
@@ -77,6 +65,45 @@ app.controller('leafletController', ['$scope', function leafletController($scope
         return combined;
 
     };
+
+    // var _combineConsecutiveArrays = function (combined, point) {
+    //     debugger;
+    //     var lastValue;
+    //
+    //     var x;
+    //     if (combined.length === 0) {
+    //         point.array.forEach(function (item) {
+    //             x = item;
+    //             x.lat = x.lat * 1;
+    //             x.lon = x.lon * 1;
+    //             x.shape_dist_traveled = x.shape_dist_traveled * 1;
+    //             combined.push(x);
+    //         });
+    //     } else {
+    //         if (!lastValue) lastValue = combined[combined.length - 1].shape_dist_traveled;
+    //
+    //         var lastItemInPriorArray = combined[combined.length - 1];
+    //
+    //         if (lastItemInPriorArray.lon === point.array[0].lon * 1 && lastItemInPriorArray.lat === point.array[0].lat * 1) {
+    //             if (lastItemInPriorArray.stop_id) {
+    //                 point.array.shift();
+    //             } else {
+    //                 combined.pop();
+    //             }
+    //         }
+    //
+    //         point.array.forEach(function (item) {
+    //             x = item;
+    //             x.lat = x.lat * 1;
+    //             x.lon = x.lon * 1;
+    //             x.shape_dist_traveled = x.shape_dist_traveled * 1 + lastValue;
+    //             combined.push(x);
+    //         });
+    //
+    //     }
+    //     return combined;
+    //
+    // };
 
     $scope.route = "powell";
     $scope.service_id = "sat";
@@ -911,8 +938,13 @@ app.controller('leafletController', ['$scope', function leafletController($scope
                     for (var prop in routeIdObj) {
                         newArray.push({id: prop, array: routeIdObj[prop]});
                     }
-
+debugger;
                     var pointArray = newArray.sort(_sortById).reduce(_combineConsecutiveArrays, []);
+
+
+
+
+                    debugger;
                     pointArray.forEach(_addStopOrPointMarker);
 
                     var clonedArray = [].concat(pointArray.reverse());
