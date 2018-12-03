@@ -494,255 +494,255 @@ app.controller('leafletController', ['$scope', function leafletController($scope
                         "trip_id": "231"
                     }
                     ],
-                    // "232": [
-                    //     {
-                    //     "shape_dist_traveled": "0.0000",
-                    //     "lat": "37.8371",
-                    //     "lon": "-122.3025",
-                    //     "shape_pt_sequence": 1,
-                    //     "trip_id": "232"
-                    // }, {
-                    //     "service_id": "sat",
-                    //     "shape_dist_traveled": "178.7216",
-                    //     "stop_sequence": 1,
-                    //     "stop_id": "fps_i",
-                    //     "stop_name": "Fire and Police Stations",
-                    //     "lat": "37.8372",
-                    //     "lon": "-122.3046",
-                    //     "trip_id": "232"
-                    // }, {
-                    //     "shape_dist_traveled": "277.5221",
-                    //     "lat": "37.8372",
-                    //     "lon": "-122.3057",
-                    //     "shape_pt_sequence": 3
-                    // }, {
-                    //     "shape_dist_traveled": "310.9666",
-                    //     "lat": "37.8371",
-                    //     "lon": "-122.3061",
-                    //     "shape_pt_sequence": 4
-                    // }, {
-                    //     "shape_dist_traveled": "322.1207",
-                    //     "lat": "37.8370",
-                    //     "lon": "-122.3061",
-                    //     "shape_pt_sequence": 5
-                    // }, {
-                    //     "shape_dist_traveled": "394.4393",
-                    //     "lat": "37.8370",
-                    //     "lon": "-122.3052",
-                    //     "shape_pt_sequence": 6
-                    // }, {
-                    //     "shape_dist_traveled": "699.1652",
-                    //     "lat": "37.8370",
-                    //     "lon": "-122.3018",
-                    //     "shape_pt_sequence": 7
-                    // }, {
-                    //     "shape_dist_traveled": "784.5292",
-                    //     "lat": "37.8370",
-                    //     "lon": "-122.3008",
-                    //     "shape_pt_sequence": 8
-                    // }, {
-                    //     "shape_dist_traveled": "817.6896",
-                    //     "lat": "37.8371",
-                    //     "lon": "-122.3004",
-                    //     "shape_pt_sequence": 9
-                    // }, {
-                    //     "shape_dist_traveled": "989.5392",
-                    //     "lat": "37.8375",
-                    //     "lon": "-122.2985",
-                    //     "shape_pt_sequence": 10
-                    // }, {
-                    //     "shape_dist_traveled": "1281.6843",
-                    //     "lat": "37.8382",
-                    //     "lon": "-122.2953",
-                    //     "shape_pt_sequence": 11
-                    // }, {
-                    //     "shape_dist_traveled": "1330.4417",
-                    //     "lat": "37.8382",
-                    //     "lon": "-122.2948",
-                    //     "shape_pt_sequence": 12
-                    // }, {
-                    //     "shape_dist_traveled": "1351.6951",
-                    //     "lat": "37.8381",
-                    //     "lon": "-122.2946",
-                    //     "shape_pt_sequence": 13
-                    // }, {
-                    //     "service_id": "sat",
-                    //     "shape_dist_traveled": "1438.6840",
-                    //     "stop_sequence": 2,
-                    //     "stop_id": "chpp_i",
-                    //     "stop_name": "Christie at Powell St. Plaza",
-                    //     "lat": "37.8373",
-                    //     "lon": "-122.2944",
-                    //     "trip_id": "232"
-                    // }, {
-                    //     "shape_dist_traveled": "1456.2836",
-                    //     "lat": "37.8372",
-                    //     "lon": "-122.2943",
-                    //     "shape_pt_sequence": 15
-                    // }, {
-                    //     "shape_dist_traveled": "1488.2102",
-                    //     "lat": "37.8370",
-                    //     "lon": "-122.2940",
-                    //     "shape_pt_sequence": 16
-                    // }, {
-                    //     "shape_dist_traveled": "1564.6192",
-                    //     "lat": "37.8370",
-                    //     "lon": "-122.2932",
-                    //     "shape_pt_sequence": 17
-                    // }, {
-                    //     "shape_dist_traveled": "1590.9203",
-                    //     "lat": "37.8368",
-                    //     "lon": "-122.2930",
-                    //     "shape_pt_sequence": 18
-                    // }, {
-                    //     "shape_dist_traveled": "1761.3749",
-                    //     "lat": "37.8353",
-                    //     "lon": "-122.2929",
-                    //     "shape_pt_sequence": 19
-                    // }, {
-                    //     "shape_dist_traveled": "1809.5823",
-                    //     "lat": "37.8348",
-                    //     "lon": "-122.2930",
-                    //     "shape_pt_sequence": 20
-                    // }, {
-                    //     "service_id": "sat",
-                    //     "shape_dist_traveled": "1913.4313",
-                    //     "stop_sequence": 3,
-                    //     "stop_id": "ctbmt_i",
-                    //     "stop_name": "Courtyard by Marriott",
-                    //     "lat": "37.8340",
-                    //     "lon": "-122.2934",
-                    //     "trip_id": "232"
-                    // }, {
-                    //     "shape_dist_traveled": "1960.9518",
-                    //     "lat": "37.8336",
-                    //     "lon": "-122.2935",
-                    //     "shape_pt_sequence": 22
-                    // }, {
-                    //     "shape_dist_traveled": "2004.3978",
-                    //     "lat": "37.8332",
-                    //     "lon": "-122.2935",
-                    //     "shape_pt_sequence": 23
-                    // }, {
-                    //     "shape_dist_traveled": "2132.0300",
-                    //     "lat": "37.8321",
-                    //     "lon": "-122.2931",
-                    //     "shape_pt_sequence": 24
-                    // }, {
-                    //     "shape_dist_traveled": "2198.1096",
-                    //     "lat": "37.8315",
-                    //     "lon": "-122.2930",
-                    //     "shape_pt_sequence": 25
-                    // }, {
-                    //     "shape_dist_traveled": "2412.9747",
-                    //     "lat": "37.8295",
-                    //     "lon": "-122.2929",
-                    //     "shape_pt_sequence": 26
-                    // }, {
-                    //     "shape_dist_traveled": "2447.7040",
-                    //     "lat": "37.8292",
-                    //     "lon": "-122.2928",
-                    //     "shape_pt_sequence": 27
-                    // }, {
-                    //     "shape_dist_traveled": "2512.5334",
-                    //     "lat": "37.8287",
-                    //     "lon": "-122.2924",
-                    //     "shape_pt_sequence": 28
-                    // }, {
-                    //     "shape_dist_traveled": "2574.2122",
-                    //     "lat": "37.8285",
-                    //     "lon": "-122.2918",
-                    //     "shape_pt_sequence": 29
-                    // }, {
-                    //     "shape_dist_traveled": "2615.5509",
-                    //     "lat": "37.8286",
-                    //     "lon": "-122.2913",
-                    //     "shape_pt_sequence": 30
-                    // }, {
-                    //     "shape_dist_traveled": "2894.6988",
-                    //     "lat": "37.8292",
-                    //     "lon": "-122.2882",
-                    //     "shape_pt_sequence": 31
-                    // }, {
-                    //     "service_id": "sat",
-                    //     "shape_dist_traveled": "2981.7620",
-                    //     "stop_sequence": 4,
-                    //     "stop_id": "40hr_i",
-                    //     "stop_name": "40th at Horton",
-                    //     "lat": "37.8294",
-                    //     "lon": "-122.2872",
-                    //     "trip_id": "232"
-                    // }, {
-                    //     "service_id": "sat",
-                    //     "shape_dist_traveled": "3195.3755",
-                    //     "stop_sequence": 5,
-                    //     "stop_id": "40ho_i",
-                    //     "stop_name": "40th at Hollis",
-                    //     "lat": "37.8299",
-                    //     "lon": "-122.2849",
-                    //     "trip_id": "232"
-                    // }, {
-                    //     "service_id": "sat",
-                    //     "shape_dist_traveled": "3522.0768",
-                    //     "stop_sequence": 6,
-                    //     "stop_id": "40em_i",
-                    //     "stop_name": "40th at Emery",
-                    //     "lat": "37.8306",
-                    //     "lon": "-122.2813",
-                    //     "trip_id": "232"
-                    // }, {
-                    //     "service_id": "sat",
-                    //     "shape_dist_traveled": "3625.6930",
-                    //     "stop_sequence": 7,
-                    //     "stop_id": "40sp_i",
-                    //     "stop_name": "40th at San Pablo",
-                    //     "lat": "37.8308",
-                    //     "lon": "-122.2802",
-                    //     "trip_id": "232"
-                    // }, {
-                    //     "shape_dist_traveled": "3779.4196",
-                    //     "lat": "37.8312",
-                    //     "lon": "-122.2785",
-                    //     "shape_pt_sequence": 36
-                    // }, {
-                    //     "shape_dist_traveled": "3807.0061",
-                    //     "lat": "37.8312",
-                    //     "lon": "-122.2782",
-                    //     "shape_pt_sequence": 37
-                    // }, {
-                    //     "shape_dist_traveled": "4025.2345",
-                    //     "lat": "37.8308",
-                    //     "lon": "-122.2757",
-                    //     "shape_pt_sequence": 38
-                    // }, {
-                    //     "shape_dist_traveled": "4319.9071",
-                    //     "lat": "37.8303",
-                    //     "lon": "-122.2724",
-                    //     "shape_pt_sequence": 39
-                    // }, {
-                    //     "shape_dist_traveled": "4649.2613",
-                    //     "lat": "37.8297",
-                    //     "lon": "-122.2688",
-                    //     "shape_pt_sequence": 40
-                    // }, {
-                    //     "service_id": "sat",
-                    //     "shape_dist_traveled": "4760.8793",
-                    //     "stop_sequence": 8,
-                    //     "stop_id": "bartw_i",
-                    //     "stop_name": "MacArthur Bart Station",
-                    //     "lat": "37.8295",
-                    //     "lon": "-122.2675",
-                    //     "trip_id": "232"
-                    // }, {
-                    //     "service_id": "sat",
-                    //     "shape_dist_traveled": "4813.4237",
-                    //     "stop_sequence": 9,
-                    //     "stop_id": "barta_i",
-                    //     "stop_name": "MacArthur Bart Station (Hidden Arrival)",
-                    //     "lat": "37.8294",
-                    //     "lon": "-122.2669",
-                    //     "trip_id": "232"
-                    // }]
+                    "232": [
+                        {
+                        "shape_dist_traveled": "0.0000",
+                        "lat": "37.8371",
+                        "lon": "-122.3025",
+                        "shape_pt_sequence": 1,
+                        "trip_id": "232"
+                    }, {
+                        "service_id": "sat",
+                        "shape_dist_traveled": "178.7216",
+                        "stop_sequence": 1,
+                        "stop_id": "fps_i",
+                        "stop_name": "Fire and Police Stations",
+                        "lat": "37.8372",
+                        "lon": "-122.3046",
+                        "trip_id": "232"
+                    }, {
+                        "shape_dist_traveled": "277.5221",
+                        "lat": "37.8372",
+                        "lon": "-122.3057",
+                        "shape_pt_sequence": 3
+                    }, {
+                        "shape_dist_traveled": "310.9666",
+                        "lat": "37.8371",
+                        "lon": "-122.3061",
+                        "shape_pt_sequence": 4
+                    }, {
+                        "shape_dist_traveled": "322.1207",
+                        "lat": "37.8370",
+                        "lon": "-122.3061",
+                        "shape_pt_sequence": 5
+                    }, {
+                        "shape_dist_traveled": "394.4393",
+                        "lat": "37.8370",
+                        "lon": "-122.3052",
+                        "shape_pt_sequence": 6
+                    }, {
+                        "shape_dist_traveled": "699.1652",
+                        "lat": "37.8370",
+                        "lon": "-122.3018",
+                        "shape_pt_sequence": 7
+                    }, {
+                        "shape_dist_traveled": "784.5292",
+                        "lat": "37.8370",
+                        "lon": "-122.3008",
+                        "shape_pt_sequence": 8
+                    }, {
+                        "shape_dist_traveled": "817.6896",
+                        "lat": "37.8371",
+                        "lon": "-122.3004",
+                        "shape_pt_sequence": 9
+                    }, {
+                        "shape_dist_traveled": "989.5392",
+                        "lat": "37.8375",
+                        "lon": "-122.2985",
+                        "shape_pt_sequence": 10
+                    }, {
+                        "shape_dist_traveled": "1281.6843",
+                        "lat": "37.8382",
+                        "lon": "-122.2953",
+                        "shape_pt_sequence": 11
+                    }, {
+                        "shape_dist_traveled": "1330.4417",
+                        "lat": "37.8382",
+                        "lon": "-122.2948",
+                        "shape_pt_sequence": 12
+                    }, {
+                        "shape_dist_traveled": "1351.6951",
+                        "lat": "37.8381",
+                        "lon": "-122.2946",
+                        "shape_pt_sequence": 13
+                    }, {
+                        "service_id": "sat",
+                        "shape_dist_traveled": "1438.6840",
+                        "stop_sequence": 2,
+                        "stop_id": "chpp_i",
+                        "stop_name": "Christie at Powell St. Plaza",
+                        "lat": "37.8373",
+                        "lon": "-122.2944",
+                        "trip_id": "232"
+                    }, {
+                        "shape_dist_traveled": "1456.2836",
+                        "lat": "37.8372",
+                        "lon": "-122.2943",
+                        "shape_pt_sequence": 15
+                    }, {
+                        "shape_dist_traveled": "1488.2102",
+                        "lat": "37.8370",
+                        "lon": "-122.2940",
+                        "shape_pt_sequence": 16
+                    }, {
+                        "shape_dist_traveled": "1564.6192",
+                        "lat": "37.8370",
+                        "lon": "-122.2932",
+                        "shape_pt_sequence": 17
+                    }, {
+                        "shape_dist_traveled": "1590.9203",
+                        "lat": "37.8368",
+                        "lon": "-122.2930",
+                        "shape_pt_sequence": 18
+                    }, {
+                        "shape_dist_traveled": "1761.3749",
+                        "lat": "37.8353",
+                        "lon": "-122.2929",
+                        "shape_pt_sequence": 19
+                    }, {
+                        "shape_dist_traveled": "1809.5823",
+                        "lat": "37.8348",
+                        "lon": "-122.2930",
+                        "shape_pt_sequence": 20
+                    }, {
+                        "service_id": "sat",
+                        "shape_dist_traveled": "1913.4313",
+                        "stop_sequence": 3,
+                        "stop_id": "ctbmt_i",
+                        "stop_name": "Courtyard by Marriott",
+                        "lat": "37.8340",
+                        "lon": "-122.2934",
+                        "trip_id": "232"
+                    }, {
+                        "shape_dist_traveled": "1960.9518",
+                        "lat": "37.8336",
+                        "lon": "-122.2935",
+                        "shape_pt_sequence": 22
+                    }, {
+                        "shape_dist_traveled": "2004.3978",
+                        "lat": "37.8332",
+                        "lon": "-122.2935",
+                        "shape_pt_sequence": 23
+                    }, {
+                        "shape_dist_traveled": "2132.0300",
+                        "lat": "37.8321",
+                        "lon": "-122.2931",
+                        "shape_pt_sequence": 24
+                    }, {
+                        "shape_dist_traveled": "2198.1096",
+                        "lat": "37.8315",
+                        "lon": "-122.2930",
+                        "shape_pt_sequence": 25
+                    }, {
+                        "shape_dist_traveled": "2412.9747",
+                        "lat": "37.8295",
+                        "lon": "-122.2929",
+                        "shape_pt_sequence": 26
+                    }, {
+                        "shape_dist_traveled": "2447.7040",
+                        "lat": "37.8292",
+                        "lon": "-122.2928",
+                        "shape_pt_sequence": 27
+                    }, {
+                        "shape_dist_traveled": "2512.5334",
+                        "lat": "37.8287",
+                        "lon": "-122.2924",
+                        "shape_pt_sequence": 28
+                    }, {
+                        "shape_dist_traveled": "2574.2122",
+                        "lat": "37.8285",
+                        "lon": "-122.2918",
+                        "shape_pt_sequence": 29
+                    }, {
+                        "shape_dist_traveled": "2615.5509",
+                        "lat": "37.8286",
+                        "lon": "-122.2913",
+                        "shape_pt_sequence": 30
+                    }, {
+                        "shape_dist_traveled": "2894.6988",
+                        "lat": "37.8292",
+                        "lon": "-122.2882",
+                        "shape_pt_sequence": 31
+                    }, {
+                        "service_id": "sat",
+                        "shape_dist_traveled": "2981.7620",
+                        "stop_sequence": 4,
+                        "stop_id": "40hr_i",
+                        "stop_name": "40th at Horton",
+                        "lat": "37.8294",
+                        "lon": "-122.2872",
+                        "trip_id": "232"
+                    }, {
+                        "service_id": "sat",
+                        "shape_dist_traveled": "3195.3755",
+                        "stop_sequence": 5,
+                        "stop_id": "40ho_i",
+                        "stop_name": "40th at Hollis",
+                        "lat": "37.8299",
+                        "lon": "-122.2849",
+                        "trip_id": "232"
+                    }, {
+                        "service_id": "sat",
+                        "shape_dist_traveled": "3522.0768",
+                        "stop_sequence": 6,
+                        "stop_id": "40em_i",
+                        "stop_name": "40th at Emery",
+                        "lat": "37.8306",
+                        "lon": "-122.2813",
+                        "trip_id": "232"
+                    }, {
+                        "service_id": "sat",
+                        "shape_dist_traveled": "3625.6930",
+                        "stop_sequence": 7,
+                        "stop_id": "40sp_i",
+                        "stop_name": "40th at San Pablo",
+                        "lat": "37.8308",
+                        "lon": "-122.2802",
+                        "trip_id": "232"
+                    }, {
+                        "shape_dist_traveled": "3779.4196",
+                        "lat": "37.8312",
+                        "lon": "-122.2785",
+                        "shape_pt_sequence": 36
+                    }, {
+                        "shape_dist_traveled": "3807.0061",
+                        "lat": "37.8312",
+                        "lon": "-122.2782",
+                        "shape_pt_sequence": 37
+                    }, {
+                        "shape_dist_traveled": "4025.2345",
+                        "lat": "37.8308",
+                        "lon": "-122.2757",
+                        "shape_pt_sequence": 38
+                    }, {
+                        "shape_dist_traveled": "4319.9071",
+                        "lat": "37.8303",
+                        "lon": "-122.2724",
+                        "shape_pt_sequence": 39
+                    }, {
+                        "shape_dist_traveled": "4649.2613",
+                        "lat": "37.8297",
+                        "lon": "-122.2688",
+                        "shape_pt_sequence": 40
+                    }, {
+                        "service_id": "sat",
+                        "shape_dist_traveled": "4760.8793",
+                        "stop_sequence": 8,
+                        "stop_id": "bartw_i",
+                        "stop_name": "MacArthur Bart Station",
+                        "lat": "37.8295",
+                        "lon": "-122.2675",
+                        "trip_id": "232"
+                    }, {
+                        "service_id": "sat",
+                        "shape_dist_traveled": "4813.4237",
+                        "stop_sequence": 9,
+                        "stop_id": "barta_i",
+                        "stop_name": "MacArthur Bart Station (Hidden Arrival)",
+                        "lat": "37.8294",
+                        "lon": "-122.2669",
+                        "trip_id": "232"
+                    }]
                 }, "sun": {"343": [], "344": []}, "wkd": {"429": [], "430": []}
             }
         }]
@@ -759,20 +759,36 @@ app.controller('leafletController', ['$scope', function leafletController($scope
         }
     };
 
-    var _addStopOrPointMarker = function (point) {
+    var _addStopOrPointMarker = function (point,num) {
 
-        $scope.markers[point.stop_id ? 'stop' + point.stop_id : 'point' + point.shape_pt_sequence] =
-            {
-                lat: point.lat * 1,
-                lng: point.lon * 1,
-                draggable: false,
-                message: point.stop_id ? point.stop_id : 'point ' + point.shape_pt_sequence,
-                icon: {
-                    type: "awesomeMarker",
-                    icon: "star",
-                    markerColor: point.stop_id ? 'red' : 'blue'
-                }
-            };
+               if (point.stop_id){
+                   $scope.markers['stop' + point.stop_id+num ] =
+                       {
+                           lat: point.lat * 1,
+                           lng: point.lon * 1,
+                           draggable: false,
+                           message: point.stop_id,
+                           icon: {
+                               type: "awesomeMarker",
+                               icon: "star",
+                               markerColor:  'red'
+                           }
+                       };
+               }
+               else if (point.shape_pt_sequence){
+                   $scope.markers[ 'point' + point.shape_pt_sequence+num] =
+                       {
+                           lat: point.lat * 1,
+                           lng: point.lon * 1,
+                           draggable: false,
+                           message:  'point ' + point.shape_pt_sequence,
+                           icon: {
+                               type: "awesomeMarker",
+                               icon: "star",
+                               markerColor:  'blue'
+                           }
+                       };
+               }
 
     };
 
@@ -918,7 +934,14 @@ app.controller('leafletController', ['$scope', function leafletController($scope
                     }
                     var pointArray = newArray.sort(_sortById).reduce(_combineConsecutiveArrays, []);
 
-                    pointArray.forEach(_addStopOrPointMarker);
+
+
+                    for (var i=0; i < pointArray.length; i++){
+
+                        _addStopOrPointMarker(pointArray[i],i);
+                    }
+
+
 
                     var clonedArray = [].concat(pointArray.reverse());
                     for (var j = 0; j < clonedArray.length - 1; j++) {
