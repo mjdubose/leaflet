@@ -47,15 +47,11 @@
             <input type="radio" ng-model="triggerpoint.orientation" value="previous">
           Closest to Previous Stop
         </label><br/>
-
         <tt>trigger point location = {{triggerpoint.orientation | json}}</tt><br/>
-
     </form>
-
     <div style="display:flex; flex-wrap: wrap;">
       <div ng-repeat="marker in markers" style=" display:flex; flex-direction:column;" ng-class="marker.icon.markerColor==='red' ? 'red' : 'blue'">
           <div style="display:flex; flex: 1; "  >
-
                   {{marker.message}}
           </div>
           <div style="display:flex; flex: 1;">
@@ -67,7 +63,6 @@
           <div style="display:flex; flex: 1;">
               <div>{{marker.icon.markerColor  }}</div>
           </div>
-
       </div>
     </div>
 </div>

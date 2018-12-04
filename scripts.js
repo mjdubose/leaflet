@@ -228,7 +228,6 @@ app.controller('leafletController', ['$scope', function leafletController($scope
                 combined.push(x);
             });
         } else {
-
             var priorLastArrayItem= combined[combined.length-1];
             point.array.forEach(function (item) {
                 if (!lastValue) lastValue = combined[combined.length - 1].shape_dist_traveled;
@@ -240,10 +239,8 @@ app.controller('leafletController', ['$scope', function leafletController($scope
                     combined.push(x);
                 }
             });
-
         }
         return combined;
-
     };
     var _sortById = function (a, b) {
         if (a.id < b.id) {
@@ -413,6 +410,9 @@ app.controller('leafletController', ['$scope', function leafletController($scope
         if (triggerpoint.length > 0) {
             triggerpoints.push(triggerpoint);
         }
+
+
+
     };
 
     var _makeTriggerPointMarker = function (i, triggerpoint) {
@@ -2478,6 +2478,7 @@ app.controller('leafletController', ['$scope', function leafletController($scope
 
         });
         var i = 0;
+        debugger;
         triggerpoints.forEach(function (triggerpoint) {
             _makeTriggerPointMarker(i, triggerpoint);
             i++;
