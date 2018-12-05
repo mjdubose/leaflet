@@ -1,8 +1,5 @@
 var app = angular.module('leafletApp', ['leaflet-directive']);
 
-
-
-
 app.controller('leafletController', ['$scope', function leafletController($scope) {
 
     angular.extend($scope, {
@@ -14,18 +11,18 @@ app.controller('leafletController', ['$scope', function leafletController($scope
         markers: {}
     });
 
-
     $scope.triggerpoint = {
         orientation: 'target'
     };
 
-   var  turnTripIdPointArraysIntoTriggerPoints = function(newArray, triggerpoints,orientation, triggerpointStore, route) {
+    var turnTripIdPointArraysIntoTriggerPoints = function (newArray, triggerpoints, orientation, triggerpointStore, route) {
 
         var pointArray = newArray.sort(_sortById).reduce(_combineConsecutiveArrays, []);
 
         for (var i = 0; i < pointArray.length; i++) {
             _addStopOrPointMarker(pointArray[i], i);
         }
+
 
         var clonedArray = [].concat(pointArray.reverse());
         var tp;
@@ -229,7 +226,7 @@ app.controller('leafletController', ['$scope', function leafletController($scope
 
     var toDegrees = function (radians) {
         return radians * 180 / Math.PI;
-    }
+    };
 
     var latLngDistance = function (lat1, lon1, lat2, lon2) {
         if ((((lat1 * 1) - (lat2 * 1)) === 0) && ((lon1 * 1) - (lon2 * 1) === 0)) {
@@ -8337,7 +8334,7 @@ app.controller('leafletController', ['$scope', function leafletController($scope
             }]
     };
 
-    $scope.clear = function(){
+    $scope.clear = function () {
         $scope.markers = {};
     };
 
@@ -8347,7 +8344,12 @@ app.controller('leafletController', ['$scope', function leafletController($scope
         var triggerpoints = [];
         $scope.markers = {};
         array.forEach(function (item) {
-            if (item.route === $scope.route) {
+    console.log(item);
+          //  if (item.route === $scope.route) {
+                //   if (item.route === 'Hollis') {
+                //     debugger;
+                //
+                //   }
                 var service_id = item.data;
 
                 for (var serviceId in service_id) {
@@ -8356,16 +8358,17 @@ app.controller('leafletController', ['$scope', function leafletController($scope
 
                         console.log(serviceId);
                         if (service_id[serviceId]) {
-                            var routeIdObj = service_id[$scope.service_id];
+                            var routeIdObj = service_id[serviceId];
                             var newArray = [];
                             for (var prop in routeIdObj) {
                                 newArray.push({id: prop, array: routeIdObj[prop]});
                             }
-                         turnTripIdPointArraysIntoTriggerPoints(newArray, triggerpoints, $scope.triggerpoint.orientation, triggerpointStore, item.route);
+                            turnTripIdPointArraysIntoTriggerPoints(newArray, triggerpoints, $scope.triggerpoint.orientation, triggerpointStore, item.route);
                         }
                     }
                 }
-            }
+        //    }
+
 
         });
         var i = 0;
