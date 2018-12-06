@@ -369,7 +369,6 @@ app.controller('leafletController', ['$scope', function leafletController($scope
         return ({lat: computed[0], lon: computed[1], stop: currentStop.stop_id});
     };
 
-
     var _buildTriggerPoint = function (clonedArray, index, proximity) {
         var currentStop = clonedArray[index];
         //we have a stop and now we need to find a lat/lng that is 40 meters away
@@ -438,7 +437,6 @@ app.controller('leafletController', ['$scope', function leafletController($scope
                 }
             };
     };
-
 
     $scope.route = "powell";
     $scope.service_id = "sat";
@@ -8327,16 +8325,20 @@ app.controller('leafletController', ['$scope', function leafletController($scope
             var service_id = item.data;
 
             for (var serviceId in service_id) {
+                if (service_id.hasOwnProperty(serviceId)) {
 
-                if (typeof service_id[serviceId] !== 'string') {
+                    if (typeof service_id[serviceId] !== 'string') {
 
-                    if (service_id[serviceId]) {
-                        var routeIdObj = service_id[serviceId];
-                        var newArray = [];
-                        for (var prop in routeIdObj) {
-                            newArray.push({id: prop, array: routeIdObj[prop]});
+                        if (service_id[serviceId]) {
+                            var routeIdObj = service_id[serviceId];
+                            var newArray = [];
+                            for (var prop in routeIdObj) {
+                                if (typeof routeIdObj.hasOwnProperty(prop)) {
+                                    newArray.push({id: prop, array: routeIdObj[prop]});
+                                }
+                            }
+                            turnTripIdPointArraysIntoTriggerPoints(newArray, triggerpoints, $scope.triggerpoint.orientation, triggerpointStore, item.route);
                         }
-                        turnTripIdPointArraysIntoTriggerPoints(newArray, triggerpoints, $scope.triggerpoint.orientation, triggerpointStore, item.route);
                     }
                 }
             }
@@ -8351,25 +8353,32 @@ app.controller('leafletController', ['$scope', function leafletController($scope
         var triggerpointStorageArray = [];
 
         for (var route_id in triggerpointStore) {
-            var route = triggerpointStore[route_id];
 
-            for (var headsign_id in route) {
-                var headsign = route[headsign_id];
+            if (triggerpointStore.hasOwnProperty(route_id)) {
+                var route = triggerpointStore[route_id];
 
-                for (var stop_id in headsign) {
-                    var stop = headsign[stop_id];
+                for (var headsign_id in route) {
+                    if (route.hasOwnProperty(headsign_id)) {
+                        var headsign = route[headsign_id];
 
-                    var triggerpointToBeInserted = {
-                        route_id: route_id,
-                        stop_id: stop_id,
-                        headsign: headsign_id.split('_').join(' ')
-                    };
+                        for (var stop_id in headsign) {
+                            if (headsign.hasOwnProperty(stop_id)) {
+                                var stop = headsign[stop_id];
 
-                    triggerpointToBeInserted.trigger0 = [stop.points[0].lat, stop.points[0].lon];
-                    triggerpointToBeInserted.trigger1 = [stop.points[1].lat, stop.points[1].lon];
-                    triggerpointToBeInserted.radius0_meters = stop.points[0].radius;
-                    triggerpointToBeInserted.radius1_meters = stop.points[1].radius;
-                    triggerpointStorageArray.push(triggerpointToBeInserted);
+                                var triggerpointToBeInserted = {
+                                    route_id: route_id,
+                                    stop_id: stop_id,
+                                    headsign: headsign_id.split('_').join(' ')
+                                };
+
+                                triggerpointToBeInserted.trigger0 = [stop.points[0].lat, stop.points[0].lon];
+                                triggerpointToBeInserted.trigger1 = [stop.points[1].lat, stop.points[1].lon];
+                                triggerpointToBeInserted.radius0_meters = stop.points[0].radius;
+                                triggerpointToBeInserted.radius1_meters = stop.points[1].radius;
+                                triggerpointStorageArray.push(triggerpointToBeInserted);
+                            }
+                        }
+                    }
                 }
             }
         }
