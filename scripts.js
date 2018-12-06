@@ -18,9 +18,9 @@ app.controller('leafletController', ['$scope', function leafletController($scope
     var turnTripIdPointArraysIntoTriggerPoints = function (newArray, triggerpoints, orientation, triggerpointStore, route) {
 
         var pointArray = newArray.sort(_sortById).reduce(_combineConsecutiveArrays, []);
-        for (var i = 0; i < pointArray.length; i++) {
-            _addStopOrPointMarker(pointArray[i], i);
-        }
+        // for (var i = 0; i < pointArray.length; i++) {
+        //     _addStopOrPointMarker(pointArray[i], i);
+        // }
         var clonedArray = [].concat(pointArray.reverse());
         var tp;
 
@@ -8373,8 +8373,8 @@ app.controller('leafletController', ['$scope', function leafletController($scope
 
                                 triggerpointToBeInserted.trigger0 = [stop.points[1].lat, stop.points[1].lon];
                                 triggerpointToBeInserted.trigger1 = [stop.points[0].lat, stop.points[0].lon];
-                                triggerpointToBeInserted.radius0_meters = stop.points[0].radius;
-                                triggerpointToBeInserted.radius1_meters = stop.points[1].radius;
+                                triggerpointToBeInserted.radius0_meters = Math.round(stop.points[0].radius);
+                                triggerpointToBeInserted.radius1_meters = Math.round(stop.points[1].radius);
                                 triggerpointStorageArray.push(triggerpointToBeInserted);
                             }
                         }
