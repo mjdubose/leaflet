@@ -18,15 +18,11 @@ app.controller('leafletController', ['$scope', function leafletController($scope
     var turnTripIdPointArraysIntoTriggerPoints = function (newArray, triggerpoints, orientation, triggerpointStore, route) {
 
         var pointArray = newArray.sort(_sortById).reduce(_combineConsecutiveArrays, []);
-
         for (var i = 0; i < pointArray.length; i++) {
             _addStopOrPointMarker(pointArray[i], i);
         }
-
-
         var clonedArray = [].concat(pointArray.reverse());
         var tp;
-
 
         for (var j = 0; j < clonedArray.length - 1; j++) {
             if (clonedArray[j].stop_sequence) {
@@ -39,15 +35,13 @@ app.controller('leafletController', ['$scope', function leafletController($scope
                     triggerpointStore[route][clonedArray[j].headsign] = {}
                 }
                 var insertObj = {};
-                insertObj.first = tp;
-
+                insertObj.points = tp;
                 if (tp.length > 0) {
                     triggerpointStore[route][clonedArray[j].headsign][clonedArray[j].stop_id] = insertObj;
                     triggerpoints.push(tp);
                 }
             }
         }
-
     };
 
     var computeDistanceAndBearing = function (lat1, lon1, lat2, lon2, bearings) {
@@ -208,16 +202,11 @@ app.controller('leafletController', ['$scope', function leafletController($scope
         // to
         // -180...+180
 
-        var revAz = Math.atan2(sinAlpha, -tmp); // final bearing, if required
-
         var results = [];
 
         results.push(toDegrees(lat2));
         results.push(toDegrees(lon2));
-        // results.push(toDegrees(revAz));
-
         return results;
-
     };
 
     var toRad = function (angle) {
@@ -363,42 +352,35 @@ app.controller('leafletController', ['$scope', function leafletController($scope
         }
     };
 
-    var getTriggerPointForTarget = function (center, currentStop, clonedArray, j) {
-        var borderPoints = _getBorderingPoints(center, currentStop, clonedArray, j);
+    var getTriggerPointForTarget = function (center, currentStop, clonedArray, j, proximity) {
+
+        debugger;
+        var borderPoints;
+        if (proximity === 'target') {
+            borderPoints = _getBorderingPoints(center, currentStop, clonedArray, j);
+        } else {
+            borderPoints = _getBorderingPointsFollowingPreviousStop(center, currentStop, clonedArray, j);
+            if (!borderPoints.nextMaxPoint) {
+                return {};
+            }
+        }
         var check = computeDistanceAndBearing(borderPoints.nextMinPoint.lat, borderPoints.nextMinPoint.lon, borderPoints.nextMaxPoint.lat, borderPoints.nextMaxPoint.lon, true);
         var computed = computeDestinationAndBearing(borderPoints.nextMinPoint.lat, borderPoints.nextMinPoint.lon, check[2], borderPoints.distance);
         return ({lat: computed[0], lon: computed[1], stop: currentStop.stop_id});
     };
 
-    var getTriggerPointLocatedFollowingPreviousStop = function (center, currentStop, clonedArray, j) {
-        var borderPoints = _getBorderingPointsFollowingPreviousStop(center, currentStop, clonedArray, j);
-        if (borderPoints.nextMaxPoint) {
 
-            var check = computeDistanceAndBearing(borderPoints.nextMinPoint.lat, borderPoints.nextMinPoint.lon, borderPoints.nextMaxPoint.lat, borderPoints.nextMaxPoint.lon, true);
-            var computed = computeDestinationAndBearing(borderPoints.nextMinPoint.lat, borderPoints.nextMinPoint.lon, check[2], borderPoints.distance);
-            return ({lat: computed[0], lon: computed[1], stop: currentStop.stop_id});
-        } else {
-            return {};
-        }
-    };
-
-    var _buildTriggerPoint = function (clonedArray, j, proximity) {
-        var currentStop = clonedArray[j];
-
+    var _buildTriggerPoint = function (clonedArray, index, proximity) {
+        var currentStop = clonedArray[index];
         //we have a stop and now we need to find a lat/lng that is 40 meters away
         //lets get items in the array until we are over 40 meters away then we want to grab that item and the one before
         //and we'll have a line in which the 40 meter point is in.  default distances for center points are 55 and 85..
         //[55,85]
-
         //we need to determine if trigger points with default values will fit between stops.. if not we need to reduce the trigger point center point default distances
-
         var distanceTracker = 0;
-
         var previousPoint = currentStop;
-
-        for (var counter = 1; (j + counter < clonedArray.length); counter++) {
-
-            var currentPoint = clonedArray[j + counter];
+        for (var counter = 1; (index + counter < clonedArray.length); counter++) {
+            var currentPoint = clonedArray[index + counter];
             distanceTracker = distanceTracker + _calcLatLngDistance(previousPoint.lat, previousPoint.lon, currentPoint.lat, currentPoint.lon);
             previousPoint = currentPoint;
             if (currentPoint.stop_id) {
@@ -407,29 +389,26 @@ app.controller('leafletController', ['$scope', function leafletController($scope
 
         }
         var distance = [55, 85];
+        var radius = 15;
         while (distanceTracker < distance[0] && distanceTracker < distance[1]) {
             distance = distance.map(function (item) {
+                radius = radius / 2;
                 return item / 2;
             });
         }
-
         if (proximity !== 'target') {
             distance = distance.reverse();
         }
         var triggerpoint = [];
-        distance.forEach(function (center) {
-            if (proximity === 'target') {
-                triggerpoint.push(getTriggerPointForTarget(center, currentStop, clonedArray, j, triggerpoint));
-            } else {
 
-                var test = getTriggerPointLocatedFollowingPreviousStop(center, currentStop, clonedArray, j, triggerpoint);
+        for (var i = 0; i < distance.length; i++) {
+            var test = getTriggerPointForTarget(distance[i], currentStop, clonedArray, index, triggerpoint, proximity);
+            test.radius = radius;
 
-                if (test.lon) {
-                    triggerpoint.push(test);
-                }
+            if (test.lon) {
+                triggerpoint.push(test);
             }
-        });
-
+        }
         return triggerpoint;
     };
 
@@ -8344,32 +8323,23 @@ app.controller('leafletController', ['$scope', function leafletController($scope
         var triggerpoints = [];
         $scope.markers = {};
         array.forEach(function (item) {
-    console.log(item);
-          //  if (item.route === $scope.route) {
-                //   if (item.route === 'Hollis') {
-                //     debugger;
-                //
-                //   }
-                var service_id = item.data;
 
-                for (var serviceId in service_id) {
+            var service_id = item.data;
 
-                    if (typeof service_id[serviceId] !== 'string') {
+            for (var serviceId in service_id) {
 
-                        console.log(serviceId);
-                        if (service_id[serviceId]) {
-                            var routeIdObj = service_id[serviceId];
-                            var newArray = [];
-                            for (var prop in routeIdObj) {
-                                newArray.push({id: prop, array: routeIdObj[prop]});
-                            }
-                            turnTripIdPointArraysIntoTriggerPoints(newArray, triggerpoints, $scope.triggerpoint.orientation, triggerpointStore, item.route);
+                if (typeof service_id[serviceId] !== 'string') {
+
+                    if (service_id[serviceId]) {
+                        var routeIdObj = service_id[serviceId];
+                        var newArray = [];
+                        for (var prop in routeIdObj) {
+                            newArray.push({id: prop, array: routeIdObj[prop]});
                         }
+                        turnTripIdPointArraysIntoTriggerPoints(newArray, triggerpoints, $scope.triggerpoint.orientation, triggerpointStore, item.route);
                     }
                 }
-        //    }
-
-
+            }
         });
         var i = 0;
 
@@ -8378,8 +8348,34 @@ app.controller('leafletController', ['$scope', function leafletController($scope
             i++;
         });
 
+        var triggerpointStorageArray = [];
+
+        for (var route_id in triggerpointStore) {
+            var route = triggerpointStore[route_id];
+
+            for (var headsign_id in route) {
+                var headsign = route[headsign_id];
+
+                for (var stop_id in headsign) {
+                    var stop = headsign[stop_id];
+
+                    var triggerpointToBeInserted = {
+                        route_id: route_id,
+                        stop_id: stop_id,
+                        headsign: headsign_id.split('_').join(' ')
+                    };
+
+                    triggerpointToBeInserted.trigger0 = [stop.points[0].lat, stop.points[0].lon];
+                    triggerpointToBeInserted.trigger1 = [stop.points[1].lat, stop.points[1].lon];
+                    triggerpointToBeInserted.radius0_meters = stop.points[0].radius;
+                    triggerpointToBeInserted.radius1_meters = stop.points[1].radius;
+                    triggerpointStorageArray.push(triggerpointToBeInserted);
+                }
+            }
+        }
 
         console.log(triggerpointStore);
+        console.log(triggerpointStorageArray);
     };
 
 }]);
