@@ -8343,12 +8343,12 @@ app.controller('leafletController', ['$scope', function leafletController($scope
                 }
             }
         });
-        var i = 0;
+    //    var i = 0;
 
-        triggerpoints.forEach(function (triggerpoint) {
-            _makeTriggerPointMarker(i, triggerpoint);
-            i++;
-        });
+    //     triggerpoints.forEach(function (triggerpoint) {
+    //         _makeTriggerPointMarker(i, triggerpoint);
+    //         i++;
+    //     });
 
         var triggerpointStorageArray = [];
 
@@ -8371,8 +8371,8 @@ app.controller('leafletController', ['$scope', function leafletController($scope
                                     headsign: headsign_id.split('_').join(' ')
                                 };
 
-                                triggerpointToBeInserted.trigger0 = [stop.points[0].lat, stop.points[0].lon];
-                                triggerpointToBeInserted.trigger1 = [stop.points[1].lat, stop.points[1].lon];
+                                triggerpointToBeInserted.trigger0 = [stop.points[1].lat, stop.points[1].lon];
+                                triggerpointToBeInserted.trigger1 = [stop.points[0].lat, stop.points[0].lon];
                                 triggerpointToBeInserted.radius0_meters = stop.points[0].radius;
                                 triggerpointToBeInserted.radius1_meters = stop.points[1].radius;
                                 triggerpointStorageArray.push(triggerpointToBeInserted);
